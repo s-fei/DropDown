@@ -37,7 +37,7 @@ internal struct DPDConstant {
 
 			static let Color = UIColor.darkGray
 			static let Offset = CGSize.zero
-			static let Opacity: Float = 0.4
+			static let Opacity: Float = 0.05
 			static let Radius: CGFloat = 10
 
 		}

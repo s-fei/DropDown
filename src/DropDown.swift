@@ -123,7 +123,7 @@ public final class DropDown: UIView {
 
 	Defaults to `anchorView.bounds.width - offset.x`.
 	*/
-	public var width: CGFloat? {
+	public var customWidth: CGFloat? {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -475,7 +475,7 @@ private extension DropDown {
 		tableViewContainer.layer.cornerRadius = cornerRadius
 		tableViewContainer.layer.shadowColor = shadowColor.cgColor
 		tableViewContainer.layer.shadowOffset = shadowOffset
-//		tableViewContainer.layer.shadowOpacity = shadowOpacity
+		tableViewContainer.layer.shadowOpacity = shadowOpacity
 		tableViewContainer.layer.shadowRadius = shadowRadius
         tableViewContainer.backgroundColor = tableViewBackgroundColor
 
@@ -610,7 +610,7 @@ extension DropDown {
 
 			guard isRightBarButtonItem else { break barButtonItemCondition }
 
-			let width = self.width ?? fittingWidth()
+			let width = self.customWidth ?? fittingWidth()
 			let anchorViewWidth = anchorView.plainView.frame.width
 			let x = -(width - anchorViewWidth)
 
@@ -655,7 +655,7 @@ extension DropDown {
 	fileprivate func computeLayoutBottomDisplay(window: UIWindow) -> ComputeLayoutTuple {
 		var offscreenHeight: CGFloat = 0
 		
-		let width = self.width ?? (anchorView?.plainView.bounds.width ?? fittingWidth()) - bottomOffset.x
+		let width = self.customWidth ?? (anchorView?.plainView.bounds.width ?? fittingWidth()) - bottomOffset.x
 		
 		let anchorViewX = anchorView?.plainView.windowFrame?.minX ?? window.frame.midX - (width / 2)
 		let anchorViewY = anchorView?.plainView.windowFrame?.minY ?? window.frame.midY - (tableHeight / 2)
@@ -701,7 +701,7 @@ extension DropDown {
 			y = windowY
 		}
 		
-		let width = self.width ?? (anchorView?.plainView.bounds.width ?? fittingWidth()) - topOffset.x
+		let width = self.customWidth ?? (anchorView?.plainView.bounds.width ?? fittingWidth()) - topOffset.x
 		
 		return (x, y, width, offscreenHeight)
 	}
@@ -744,7 +744,7 @@ extension DropDown {
 	}
 	
 	fileprivate func constraintWidthToFittingSizeIfNecessary(layout: inout ComputeLayoutTuple) {
-		guard width == nil else { return }
+		guard customWidth == nil else { return }
 		
 		if layout.width < fittingWidth() {
 			layout.width = fittingWidth()
