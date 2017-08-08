@@ -14,6 +14,10 @@ open class DropDownCell: UITableViewCell {
 	@IBOutlet open weak var optionLabel: UILabel!
 	
 	var selectedBackgroundColor: UIColor?
+    
+    var defaultTextColor: UIColor?
+    
+    var selectTextColor: UIColor?
 
 }
 
@@ -52,6 +56,14 @@ extension DropDownCell {
 					self.backgroundColor = .clear
 				}
 			}
+            
+            if let selectTextColor = self.selectTextColor {
+                if selected {
+                    self.optionLabel.textColor = selectTextColor
+                } else {
+                    self.optionLabel.textColor = self.defaultTextColor
+                }
+            }
 		}
 		
 		if animated {

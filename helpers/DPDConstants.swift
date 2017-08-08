@@ -24,21 +24,22 @@ internal struct DPDConstant {
 
 	internal struct UI {
 
-		static let TextColor = UIColor.black
+		static let TextColor =  UIColor(colorLiteralRed: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1.0)
 		static let TextFont = UIFont.systemFont(ofSize: 15)
-		static let BackgroundColor = UIColor(white: 0.94, alpha: 1)
-		static let SelectionBackgroundColor = UIColor(white: 0.89, alpha: 1)
-		static let SeparatorColor = UIColor.clear
-		static let CornerRadius: CGFloat = 8
+		static let BackgroundColor = UIColor.white
+        static let SelectionTextColor = UIColor(colorLiteralRed: 248.0/255.0, green: 80.0/255.0, blue: 56.0/255.0, alpha: 1.0)
+		static let SelectionBackgroundColor = UIColor.white
+		static let SeparatorColor = UIColor(red: 211.0 / 255.0, green: 211.0 / 255.0, blue: 211.0 / 255.0, alpha: 1)
+		static let CornerRadius: CGFloat = 10
 		static let RowHeight: CGFloat = 44
 		static let HeightPadding: CGFloat = 20
 
 		struct Shadow {
 
-			static let Color = UIColor.darkGray
+			static let Color = UIColor.black
 			static let Offset = CGSize.zero
-			static let Opacity: Float = 0.05
-			static let Radius: CGFloat = 10
+			static let Opacity: Float = 0.1
+			static let Radius: CGFloat = 0
 
 		}
 
